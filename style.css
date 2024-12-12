@@ -1,0 +1,355 @@
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Убирает горизонтальную прокрутку */
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.search-bar {
+    display: inline-flex; /* Гарантирует, что элементы остаются на одной линии */
+    align-items: stretch; /* Поле и кнопка будут одинаковой высоты */
+    border: 1px solid #ddd; /* Общая граница вокруг группы */
+    border-radius: 5px; /* Скруглённые углы */
+    overflow: hidden; /* Убирает выступающие границы */
+    width: 100%; /* Занимает всю доступную ширину */
+    margin-bottom: 35px;
+}
+
+.search-bar input {
+    flex: 1; /* Заставляет поле растягиваться, занимая максимум пространства */
+    padding: 10px;
+    border: none; /* Убираем внутренние границы */
+    font-size: 14px;
+    outline: none; /* Убирает обводку при фокусе */
+}
+
+.search-bar button {
+    flex-shrink: 0; /* Запрещает кнопке уменьшаться */
+    background-color: #bde7ff;
+    border: none;
+    padding: 11px 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+    background-color: #91d7ff;
+}
+
+.search-bar button img {
+    width: 16px;
+    height: 16px;
+}
+
+
+.main-content {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    margin-bottom: 35px;
+}
+
+.first, .second, .third, .fourth {
+    position: relative; /* Устанавливаем относительное позиционирование */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 35px 18px 10px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 24px;
+    margin-top: 0px;
+    position: absolute;
+    top: -2.5%;
+    background-color: white;
+    padding: 0 8px;
+    width: fit-content;
+    border-radius: 5px;
+}
+
+.dots {
+    display: inline-block;
+    flex-grow: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    border-bottom: 1px dotted; /* Эффект точек */
+    vertical-align: middle; /* Совмещение с текстом */
+    padding-bottom: 10px; /* Опускаем точки ниже */
+    margin: 0 8px; /* Добавляем отступы между текстами */
+}
+
+p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 15px;
+}
+
+.refresh-btn {
+    position: absolute;
+    top: 8px; /* Расстояние от верхнего края */
+    right: 8px; /* Расстояние от правого края */
+    background: #41c20e;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    padding: 3px 3px 0px;
+    z-index: 10; /* Убедимся, что кнопка поверх содержимого */
+}
+
+.refresh-btn img {
+    width: 20px;
+    height: 20px;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.spinning {
+    animation: spin 1s linear infinite;
+}
+
+.session-btn, .history-btn {
+    display: block;
+    width: fit-content;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #6cc9ff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.session-btn:hover, .history-btn:hover {
+    background-color: #0088d6;
+}
+
+/* Общие стили для строки статуса */
+.status {
+    display: none; /* Скрыто по умолчанию */
+    border-radius: 5px;
+    font-size: 18px;
+    text-align: center;
+    align-items: center;
+}
+
+/* Строка статуса */
+.success, .error {
+    color: black;
+}
+
+/* Иконка перед текстом */
+.status-icon {
+    margin-right: 10px;
+    font-size: 24px;
+}
+
+/* Иконка для галочки (зелёная) */
+.check {
+    color: green;
+    background-color: #bef7bc;
+    border-radius: 50%;
+    padding: 2px 8px;
+}
+
+/* Иконка для крестика (красная) */
+.cross {
+    color: red;
+    background-color: #ffb7b7;
+    border-radius: 50%;
+    padding: 0px 8px 4px;
+
+}
+
+/* Фон модального окна */
+.modal {
+    display: none; /* Скрываем модальное окно по умолчанию */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Поверх других элементов */
+}
+
+/* Содержимое модального окна */
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+}
+
+/* Кнопка закрытия */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 38px;
+    font-weight: bold;
+    color: #ff3f3f;
+    cursor: pointer;
+}
+
+/* Подсказки */
+.tooltip-container {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.question-mark {
+    font-size: 14px;
+    color: gray;
+    border: 1px solid gray;
+    border-radius: 50%;
+    padding: 0px 4px;
+    margin-left: 5px;
+}
+
+.tooltip-content {
+    visibility: hidden;
+    width: 200px;
+    background-color: #f9f9f9;
+    color: #000;
+    text-align: left;
+    border-radius: 4px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.tooltip-container:hover .tooltip-content {
+    visibility: visible;
+}
+
+/* Изменения статуса */
+.status-box {
+    padding: 2px 6px;
+    color: white;
+    border-radius: 4px;
+}
+
+.status-box[data-status-box="ok"] {
+    background-color: rgba(0, 128, 0, 0.527);
+}
+
+.status-box[data-status-box="warning"] {
+    background-color: rgba(255, 255, 0, 0.493);
+    color: black;
+}
+
+.status-box[data-status-box="error"] {
+    background-color: rgba(255, 0, 0, 0.479);
+}
+
+.status-box[data-status-box="info"] {
+    background-color: rgba(0, 0, 255, 0.493);
+}
+
+/*--------------------Адаптив------------------------*/
+@media (max-width: 1200px) {
+    .container {
+        padding: 10px;
+    }
+
+    .main-content {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .first, .second, .third, .fourth {
+        flex: 1 1 calc(50% - 20px); /* Две колонки на средних экранах */
+        padding: 30px 20px 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .first, .second, .third, .fourth {
+        flex: 1 1 100%; /* Одна колонка на маленьких экранах */
+        padding: 30px 15px 15px;
+    }
+
+    .search-bar input {
+        border-radius: 5px;
+    }
+
+    .search-bar button {
+        width: 12%;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    .session-btn, .history-btn {
+        width: 100%;
+    }
+
+    .modal-content {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .refresh-btn {
+        width: 22px;
+        height: 22px;
+    }
+
+    .refresh-btn img {
+        width: 16px;
+        height: 16px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    p {
+        font-size: 12px;
+    }
+}

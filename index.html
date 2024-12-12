@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма диагностики</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+
+        <!-- Строка поиска -->
+        <div class="search-bar">
+            <input type="text" placeholder="Введите IP-адрес или домен">
+            <button class="search-btn">
+                <img src="https://img.icons8.com/material-outlined/24/000000/search.png" alt="Иконка поиска">
+            </button>
+        </div>
+
+        <div class="main-content">
+            <!-- Первая колонка -->
+            <div class="first">
+                <button class="refresh-btn">
+                    <img src="https://img.icons8.com/?size=100&id=59872&format=png&color=000000" alt="Обновить">
+                </button>
+                <h2>Сессия</h2>
+                <div class="section">
+                    <p><b>IPv4 Addres:</b><span class="dots"></span>xxx.xxx.xxx.x</p>
+                    <p><b>IPv6 Addres:</b><span class="dots"></span>xxx.xxx.xxx.x</p>
+                    <p><b>IPv6 PD:</b><span class="dots"></span>xxx.xxx.xxx.x</p>
+                    <p><b>Mac Addres:</b><span class="dots"></span>xxx.xxx.xxx.xx</p>
+                </div>
+                <div class="section">
+                    <p><b>Принято байт:</b><span class="dots"></span>хххх</p>
+                    <p><b>Отправлено байт:</b><span class="dots"></span>хххх</p>
+                    <p><b>Принято байт (IPv6):</b><span class="dots"></span>хххх</p>
+                    <p><b>Отправлено байт (IPv6):</b><span class="dots"></span>хххх</p>
+                </div>
+                <div class="section">
+                    <p><b>Временная после обновления:</b><span class="dots"></span>05:26:23</p>
+                    <p><b>Время стратра:</b><span class="dots"></span>09-12-2024, 18:53</p>
+                </div>
+                <div class="section">
+                    <p><b>Брас:</b><span class="dots"></span>br_bras1
+                        <span class="tooltip-container">
+                            <span class="question-mark">?</span>
+                            <span class="tooltip-content">Подсказка: это описание брасса</span>
+                        </span>
+                    </p>
+                </div>
+                <div class="status success" id="success-status">
+                    <span class="status-icon check">&#10004;</span>Сессия сброшена
+                </div>
+                <div class="status error" id="error-status">
+                    <span class="status-icon cross">&#10008;</span>Не удалось сбросить сессию
+                </div>
+                <button class="session-btn" id="reset-session-btn">Сбросить сессию</button>
+            </div>
+            
+            <!-- Вторая колонка -->
+            <div class="second">
+                <button class="refresh-btn">
+                    <img src="https://img.icons8.com/?size=100&id=59872&format=png&color=000000" alt="Обновить">
+                </button>
+                <h2>Пользователь</h2>
+                <div class="section">
+                    <p><b>ФИО (имя):</b><span class="dots"></span>Масенко Игорь Михайлович</p>
+                    <p><b>Договор:</b><span class="dots"></span>(от 10.12.22)</p>
+                </div>
+                <div class="section">
+                    <p><b>IPv4 Addres:</b><span class="dots"></span>xxxxx</p>
+                    <p><b>Mac Addres:</b><span class="dots"></span>xxxxx</p>
+                    <p><b>Rautes:</b><span class="dots"></span>xxxxx</p>
+                </div>
+                <div class="section">
+                    <p><b>Тариф:</b><span class="dots"></span>МКД 100</p>
+                    <p><b>Скорость IN:</b><span class="dots"></span>65</p>
+                    <p><b>Скорость Out:</b><span class="dots"></span>78</p>
+                    <p><b>Цена:</b><span class="dots"></span>650</p>
+                    <p><b>Срок действия от:</b><span class="dots"></span>10.12.22</p>
+                    <p><b>Срок действия до:</b><span class="dots"></span>10.12.23</p>
+                </div>
+                <button class="history-btn">Имтория платежей</button>
+                <div class="modal" id="history-modal">
+                    <div class="modal-content">
+                        <span class="close-btn">&times;</span>
+                        <h3>История платежей</h3>
+                        <p>Здесь будет информация о платежах.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="main-content">
+            <!-- Третья колонка -->
+            <div class="third">
+                <button class="refresh-btn">
+                    <img src="https://img.icons8.com/?size=100&id=59872&format=png&color=000000" alt="Обновить">
+                </button>
+                <h2>GPON</h2>
+                <div class="section">
+                    <p><b>HWID:</b><span class="dots"></span>ELTXxxxxxxx</p>
+                    <p><b>Статус:</b>
+                        <span class="dots"></span>
+                        <span class="status-box" data-status-box="ok">Ok</span>
+                    </p>
+                    <p><b>Equipment:</b><span class="dots"></span>NTU1</p>
+                </div>
+                <div class="section">
+                    <p><b>RSS:</b><span class="dots"></span>-30
+                        <span class="tooltip-container">
+                            <span class="question-mark">?</span>
+                            <span class="tooltip-content">Это индикатор уровня сигнала, принимаемого сетевым устройством.</span>
+                        </span>
+                    </p>
+                    <p><b>TX:</b><span class="dots"></span>XX</p>
+                    <p><b>RI:</b><span class="dots"></span>XX</p>
+                </div>
+                <div class="section">
+                    <p><b>Temperature:</b><span class="dots"></span>30℃</p>
+                </div>
+                <div class="section">
+                    <p><b>Distance:</b><span class="dots"></span>6.8</p>
+                </div>
+                <div class="section">
+                    <p><b>Lime UP:</b><span class="dots"></span>20.11.24</p>
+                    <p><b>Lime DOWN:</b><span class="dots"></span>20.11.24</p>
+                    <p><b>Last State:</b><span class="dots"></span>Worning</p>
+                </div>
+                <div class="section">
+                    <p><b>OLT Name:</b><span class="dots"></span>map top</p>
+                    <p><b>OLT UPtime:</b><span class="dots"></span>23d</p>
+                    <p><b>OLT IP:</b><span class="dots"></span>1.1.1.1</p>
+                </div>
+            </div>
+
+            <!-- Четвортая колонка -->
+            <div class="fourth">
+                <button class="refresh-btn">
+                    <img src="https://img.icons8.com/?size=100&id=59872&format=png&color=000000" alt="Обновить">
+                </button>
+                <h2>Swith</h2>
+                <div class="section">
+                    <p><b>Port State:</b><span class="dots"></span>Ok</p>
+                    <p><b>Port Speed:</b><span class="dots"></span>100m</p>
+                    <p><b>Tx Butes:</b><span class="dots"></span>xxx</p>
+                    <p><b>Rx Butes:</b><span class="dots"></span>xxx</p>
+                    <p><b>Tx ERR:</b><span class="dots"></span>xxx</p>
+                    <p><b>Rx ERR:</b><span class="dots"></span>xxx</p>
+                </div>
+                <div class="section">
+                    <p><b>Last UP:</b><span class="dots"></span>20.11.2024</p>
+                    <p><b>Last DOWN:</b><span class="dots"></span>20.12.2024</p>
+                </div>
+                <div class="section">
+                    <p><b>Tx Dbm:</b><span class="dots"></span>-30</p>
+                    <p><b>Rx Dbm:</b><span class="dots"></span>+1</p>
+                </div>
+                <div class="section">
+                    <p><b>ManOnPort:</b><span class="dots"></span></p>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
