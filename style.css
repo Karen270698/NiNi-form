@@ -297,7 +297,7 @@ p {
 
     .main-content {
         flex-wrap: wrap;
-        gap: 15px;
+        gap: 30px;
     }
 
     .first, .second, .third, .fourth {
