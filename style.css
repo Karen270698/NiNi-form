@@ -1,9 +1,11 @@
+* {
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
+}
 body {
     font-family: 'Roboto', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    overflow-x: hidden; /* Убирает горизонтальную прокрутку */
-    box-sizing: border-box;
 }
 
 .container {
@@ -253,8 +255,8 @@ p {
     position: absolute;
     z-index: 1;
     bottom: 125%;
-    left: 50%;
-    transform: translateX(-50%);
+    right: 0%;
+    /*transform: translateX(-50%);*/
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -289,7 +291,8 @@ p {
 /*--------------------Адаптив------------------------*/
 @media (max-width: 1200px) {
     .container {
-        padding: 10px;
+        padding: 20px;
+        width: 100%;
     }
 
     .main-content {
